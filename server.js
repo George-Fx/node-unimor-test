@@ -15,6 +15,9 @@ mongoose.connect(MONGO_URI, {dbName: DATABASE_NAME});
 
 const DB = mongoose.connection;
 
+DB.on('error', console.error.bind(console, 'connection error:'));
+DB.once('open', () => console.log('Database connected!'));
+
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
