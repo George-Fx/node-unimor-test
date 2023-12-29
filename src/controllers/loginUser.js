@@ -2,8 +2,8 @@ const User = require('../models/user.js');
 
 const loginUser = async (req, res, next) => {
   try {
-    const userName = req.body.userName;
-    // res.send(`This is ${userName}`);
+    // const userName = req.body.userName;
+    const userName = await User.findOne({userName: req.body.userName});
     if (!userName) {
       res.send(`This is ${userName}`);
     } else {
