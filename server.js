@@ -18,16 +18,18 @@ const DB = mongoose.connection;
 DB.on('error', console.error.bind(console, 'connection error:'));
 DB.once('open', () => console.log('Database connected!'));
 
-const app = express();
+const PORT = process.env.PORT || 8000;
 
+const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(router);
 
 app.get("/", (req, res) => {
   res.send("This is test node!");
 });
 
-const PORT = process.env.PORT || 8000;
+
 
 app.listen(PORT);
 
