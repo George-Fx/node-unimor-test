@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const {MongoClient} = require('mongodb');
 
+const app = express();
+
 const PORT = process.env.PORT || 3000;
 const MONGO_URL =
   'mongodb+srv://dbUser:8ubNiYGkCIg32REc@cuppies.9gr1pj3.mongodb.net/?retryWrites=true&w=majority';
@@ -15,7 +17,7 @@ DB.collection('users')
   .toArray()
   .then((data) => console.log(data));
 
-const app = express();
+
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
