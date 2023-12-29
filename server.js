@@ -13,6 +13,8 @@ const router = require('./src/router/router.js');
 
 mongoose.connect(MONGO_URI, {dbName: DATABASE_NAME});
 
+const DB = mongoose.connection;
+
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
