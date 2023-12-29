@@ -3,7 +3,8 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user.js'); 
 
 const loginUser = async (req, res, next) => {
-  res.send('This is loginUser');
+  const userName = req.body.userName;
+  res.send(`This is ${userName}`);
   // try {
 
   //   const user = await User.findOne({userName: req.body.userName});
