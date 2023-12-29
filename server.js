@@ -28,8 +28,6 @@ app.get("/", (req, res) => {
   res.send("This is test node!");
 });
 
-app.listen(PORT, () => {
-  console.log(`http://localhost:${PORT}`);
-});
+app.listen(PORT);
 
 module.exports = app;
