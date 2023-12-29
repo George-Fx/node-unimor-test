@@ -1,17 +1,25 @@
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const User = require('../models/user.js'); 
 
 const loginUser = async (req, res, next) => {
-  const userName = await User.findOne({userName: req.body.userName});
   try {
-    // const userName = req.body.userName;
-    const userName = await User.findOne({userName: req.body.userName});
-    if (!userName) {
-      res.send(`This is ${userName}`);
-    } else {
-      res.send(`This is no ${userName}`);
+    const user = await User.findOne({userName: req.body.userName});
+    if (!user) {
+      throw new Error('User not found');
     }
 
+    const isMatch = await bcrypt.compare(req.body.password, user.password);
+    if (!isMatch) {
+      throw new Error('Invalid password');
+    }
+
+    const token = jwt.sign({id: user._id}, 'your_jwt_secret', {expiresIn: '1h'});
+
+    res.status(200).json({user, token});
   } catch (error) {
+    console.error(error);
+    res.status(400).json({error: error.message});
   }
 };
 
