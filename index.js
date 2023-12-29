@@ -1,4 +1,3 @@
-// LIBRARIES //
 const express = require('express');
 const bodyParser = require('body-parser');
 const {MongoClient} = require('mongodb');
