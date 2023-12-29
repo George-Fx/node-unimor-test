@@ -21,6 +21,7 @@ DB.once('open', () => console.log('Database connected!'));
 const PORT = process.env.PORT || 8000;
 
 const app = express();
+app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(router);
