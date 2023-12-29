@@ -9,6 +9,8 @@ dotenv.config();
 const MONGO_URI = process.env.MONGO_URI;
 const DATABASE_NAME = process.env.DATABASE_NAME;
 
+const router = require('./src/router/router.js');
+
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
