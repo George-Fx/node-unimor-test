@@ -17,5 +17,8 @@ router.post('/user/create', [ifUserExists, hashPassword], createUser);
 router.get('/testrequest', (req, res) => {
     res.send('This is a test request!');
 });
+router.post('/testrequest', (req, res) => {
+    res.send('This is a test request!');
+});
 
 module.exports = router;
