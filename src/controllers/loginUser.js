@@ -1,6 +1,7 @@
 const User = require('../models/user.js'); 
 
 const loginUser = async (req, res, next) => {
+  const userName = await User.findOne({userName: req.body.userName});
   try {
     // const userName = req.body.userName;
     const userName = await User.findOne({userName: req.body.userName});
